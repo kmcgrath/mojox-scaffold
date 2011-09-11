@@ -49,9 +49,10 @@ sub register {
             my @params = @_;
 
             my %valid_option = (
-                '-except'   => 1,
-                '-only'     => 1,
-                '-singular' => 1
+                '-except'       => 1,
+                '-only'         => 1,
+                '-singular'     => 1,
+                '-parent_route' => 1,
             );
 
             my $last_route;
@@ -145,7 +146,7 @@ sub generate_routes {
 
 
     # Get routes object
-    my $r = $c->app->routes;
+    my $r = $options->{parent_route} || $c->app->routes;
 
 
     # Nested route
